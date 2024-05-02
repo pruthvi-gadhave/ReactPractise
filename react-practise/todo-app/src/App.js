@@ -29,10 +29,18 @@ const [todoList ,setTodoList ] = useState([]) ;
     setTodoList(newToDos);
     
   }
+  const handleDeleteToDo = (id) => {
+    deleteToDo(id) ;
+  }
+
+  const deleteToDo = (id) => {
+    const newtoDoList = todoList.filter((obj) => obj.name !== id)  ;
+    setTodoList(newtoDoList);
+  }
   return (<>
  <AppName/>
   <ToDoForm handleAddTodo={handleAddTodo}/>
-  <ToDoItems todoList ={todoList} />
+  <ToDoItems todoList ={todoList} handleDeleteToDo={handleDeleteToDo} />
   </>
   )
 }

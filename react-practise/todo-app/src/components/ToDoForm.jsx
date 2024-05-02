@@ -40,7 +40,7 @@ function ToDoForm({ handleAddTodo }) {
             <div class="container text-center">
                 <div className="row ">
                     <div className="col-4">
-                        <input type="text" placeholder="Enter ToDo Here" name="name" value={toDoName.name} onChange={handleToDoName} />
+                        <input type="text" placeholder="Enter ToDo Here" name="name" value={toDoName.name} onChange={handleToDoName}  />
                     </div>
                     <div className="col-4">
                         <input type="date" value={toDoName.dueDate} name="dueDate" onChange={handleToDoName}></input>
