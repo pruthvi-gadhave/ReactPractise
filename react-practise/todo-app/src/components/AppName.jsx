@@ -1,8 +1,8 @@
-import App from "../App"
+import  "./AppName.css"
 
 function AppName() {
     return(
-        <center className="pb-4">To Do App </center>
+        <center className="pb-4  todo-heading">To Do App </center>
     )
 }
 

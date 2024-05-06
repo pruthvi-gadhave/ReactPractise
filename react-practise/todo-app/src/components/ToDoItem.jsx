@@ -1,21 +1,25 @@
 function ToDoItem( {todoName ,todoDate ,handleDeleteToDo}) {
-console.log(handleDeleteToDo);
-    // let item1 = 'Buy Milk' ;
-    // let itemdate = ' 09/12/2021'
+
+
     const handleDelete = (e) => {
         handleDeleteToDo(e.target.id)
     }
+
+    const handleEdit =(e) => {
+        
+    }
     return(
-        <div class="container text-center p-2">
-        <div class="row ">
-            <div class="col-4">
+        <div className="container text-center p-2">
+        <div className="row ">
+            <div className="col-4">
                {todoName}
             </div>
-            <div class="col-4">
+            <div className="col-4">
                {todoDate}
             </div>
-            <div class="col-4">
-                <button id={todoName} className=" btn btn-danger" onClick={handleDelete} >Delete</button>
+            <div className="col-4">
+                <button id={todoName} className=" btn btn-danger" onClick={handleDelete}>Delete</button>
+                <button id={todoName} className=" btn btn-primary ms-2" onClick={handleEdit}>Edit</button>
             </div>
         </div>
     </div>
