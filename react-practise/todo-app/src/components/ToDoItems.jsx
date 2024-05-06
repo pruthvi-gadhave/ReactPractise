@@ -1,11 +1,12 @@
 import ToDoItem from "./ToDoItem";
 
-const ToDoItems = ({todoList ,handleDeleteToDo}) =>  {
-    console.log( "Props as " ,todoList );
+const ToDoItems = ({todoList ,handleDeleteToDo ,handleEditToDo}) =>  {
+
     return (
         <>
         {   todoList?.map((item) => (
-                <ToDoItem todoName={item.name} todoDate={item.dueDate} handleDeleteToDo={handleDeleteToDo}/>
+                <ToDoItem todoName={item} todoDate={item.dueDate} handleDeleteToDo={handleDeleteToDo} 
+                handleEditToDo={handleEditToDo}/>
             ))
         }
         </>

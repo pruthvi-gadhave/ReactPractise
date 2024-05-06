@@ -1,13 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { generateUniqueId } from "../helpers/Helper";
 
-function ToDoForm({ handleAddTodo }) {
+function ToDoForm({ handleAddTodo ,updateToDo ,isEditClicked  ,editedToDo   }) {
 
     const initialToDo = {
+        id : "" ,
         name: "",
         dueDate: new Date().toISOString().substr(0, 10),
     }
 
     const [toDoName, setToDoName] = useState(initialToDo);
+
+
+    useEffect( () => {
+        if(isEditClicked && editedToDo){
+            setToDoName(editedToDo) ;
+        }else{
+            setToDoName(initialToDo) ;
+        }
+        debugger ;
+    } ,[isEditClicked ,editedToDo])
 
     const handleToDoName = (e) => {
         const toDoName = e.target.value;
@@ -22,6 +34,7 @@ function ToDoForm({ handleAddTodo }) {
     const handleAdd = (e) => {
         e.preventDefault();
         const newTodo = ({
+            id : generateUniqueId() ,
             name: toDoName.name,
             dueDate: toDoName.dueDate
         });
@@ -30,13 +43,24 @@ function ToDoForm({ handleAddTodo }) {
         setToDoName(initialToDo)
     }
 
-
+   function  handleUpdate(e){
+    debugger 
+    const newTodo = ({
+        name: toDoName.name,
+        dueDate: toDoName.dueDate
+    });
+    console.log("newTodo After added ", newTodo);
+    updateToDo(newTodo) ;
+    setToDoName(initialToDo)
+    }
+    
 
     return (
         <div>
 
             <div className="container text-center border p-2">
-                <div className="row ">
+              <form className="">
+              <div className="row ">
                     <div className="col-4">
                         <label className="me-2">To Do Name</label>
                         <input type="text" placeholder="Enter ToDo Here" name="name" value={toDoName.name} onChange={handleToDoName}  />
@@ -46,9 +70,19 @@ function ToDoForm({ handleAddTodo }) {
                         <input type="date" value={toDoName.dueDate} name="dueDate" onChange={handleToDoName}></input>
                     </div>
                     <div className="col-4">
-                        <button type="button" className=" btn btn-success px-4 " onClick={handleAdd}>Add</button>
+                       {
+                        (!isEditClicked ? (
+                            <button type="button" className=" btn btn-success px-4 " onClick={handleAdd}>Add</button>
+                        ) :
+                        (
+                               <button type="button" className=" btn btn-success px-4 " onClick={handleUpdate}>Update</button>
+                           
+                        )
+                        )
+                       }
                     </div>
                 </div>
+              </form>
             </div>
 
             {/* items List  */}
