@@ -44,8 +44,10 @@ function ToDoForm({ handleAddTodo ,updateToDo ,isEditClicked  ,editedToDo   }) {
     }
 
    function  handleUpdate(e){
-    debugger 
+    console.log(e.target.id);
+    debugger  
     const newTodo = ({
+        id : toDoName.id ,
         name: toDoName.name,
         dueDate: toDoName.dueDate
     });

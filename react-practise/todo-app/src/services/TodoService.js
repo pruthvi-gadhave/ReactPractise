@@ -4,6 +4,8 @@ export default class TodoService {
    todoArray = [];
 
    addTodo = (toDo) => {
+      debugger
+      this.todoArray= getLocalStorageSData() ;
       const newToDos = [...this.todoArray, toDo];
       saveToLocalStorage(newToDos);
    }
@@ -11,7 +13,7 @@ export default class TodoService {
    deleteToDo = (id) => {
       debugger;
       this.todoArray = getLocalStorageSData();
-      const newtoDoList = this.todoArray.filter((obj) => obj.name !== id);
+      const newtoDoList = this.todoArray.filter((obj) => obj.id !== id);
       saveToLocalStorage(newtoDoList);
       return newtoDoList
    }

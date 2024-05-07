@@ -14,23 +14,32 @@ const [editedToDo ,setEditedToDo] =useState({}) ;
 
 useEffect( () => {
   const data = getLocalStorageSData() ;
-  setTodoList(data) 
+  setTodoList(data) ;
 },[])
 
   const handleAddTodo = (toDo) => {
 
-    setTodoList(prevTodoList => [...prevTodoList ,toDo]);
+  setTodoList(prevTodoList => [...prevTodoList ,toDo]);
    const service = new TodoService() ;
    service.addTodo(toDo)
   }
 
 const updateToDo = (toDo) => {
-  const allToDos = getLocalStorageSData();
-  const toDos = allToDos.filter(todo => todo.id !== toDoId);
-  const newToDos = [...toDos , toDo];
-  setTodoList(prevTodoList => [...prevTodoList ,newToDos]);
-  const service = new TodoService() ;
-  service.updateNewToDo(toDo ,toDoId)
+  // debugger 
+  // const allToDos = getLocalStorageSData();
+  // const toDos = allToDos.filter(todo => todo.id !== toDoId);
+  // const newToDos = [...toDos , toDo];
+  // setTodoList(prevTodoList => [...prevTodoList ,newToDos]);
+  // const service = new TodoService() ;
+  // service.updateNewToDo(toDo ,toDoId)
+  const service = new TodoService();
+  service.updateNewToDo(toDo, toDoId);
+
+  // Update the todo list state by mapping over the existing list
+  setTodoList(prevTodoList => prevTodoList.map(todo => {
+    return todo.id === toDoId ? toDo : todo;
+  }));
+  setisEditClicked(false);
 }
 
 

@@ -17,7 +17,8 @@ function ToDoItem( {todoName ,handleDeleteToDo ,handleEditToDo }) {
     }
     return(
         <div className="container text-center p-2">
-        <div className="row ">
+            {console.log(todoName)}
+        <div className="row" id={todoName.id}>
             <div className="col-4">
                {todoName.name}
             </div>
