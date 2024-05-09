@@ -1,0 +1,6 @@
+.todo-display{
+
+    border: 1px solid black;
+    height: 61vh;
+    overflow: auto;
+}

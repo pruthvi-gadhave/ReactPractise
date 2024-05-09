@@ -4,6 +4,7 @@ import ToDoForm from "./components/ToDoForm";
 import ToDoItems from "./components/ToDoItems";
 import { getLocalStorageSData, saveToLocalStorage } from "./services/localService";
 import TodoService from "./services/TodoService";
+import "./App.css";
 
 function App ()  {
   
@@ -61,8 +62,11 @@ const updateToDo = (toDo) => {
    const toDo = todoList.find( todo => todo.id === id);   
    return toDo ;   
   }
-  return (<>
- <AppName/>
+  return (
+  <>
+  <AppName/>
+  <div className="d-flex"> 
+  <div className="todo-form w-25">
   <ToDoForm 
    handleAddTodo={handleAddTodo}
    updateToDo ={updateToDo}
@@ -70,12 +74,18 @@ const updateToDo = (toDo) => {
   toDoId={toDoId}
   editedToDo ={editedToDo}
    />
+  </div>
+  <div className="todo-display w-75 ">
+ 
   <ToDoItems 
   todoList ={todoList} 
   handleDeleteToDo={handleDeleteToDo}  
   handleEditToDo={handleEditToDo}
-  
   />
+
+  </div>
+  </div>
+
   </>
   )
 }
